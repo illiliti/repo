@@ -1,15 +1,15 @@
 #!/bin/sh -e
 
-meson \
-    --prefix=/usr \
+muon setup \
+    -Dprefix=/usr \
     -Dalsa=enabled \
     -Dlibmpv=true \
     -Dwayland=enabled \
     -Dx11=disabled \
-    . output
+    output
 
 ninja -C output
-ninja -C output install
+muon  -C output install
 
 rm -rf \
     "$1/usr/share/zsh" \
