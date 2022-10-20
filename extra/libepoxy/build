@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-meson setup \
+muon setup \
     -Dprefix=/usr \
     -Degl=yes \
     -Dtests=false \
@@ -9,4 +9,4 @@ meson setup \
     output
 
 ninja -C output
-meson install -C output
+muon  -C output install
