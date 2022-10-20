@@ -1,7 +1,14 @@
 #!/bin/sh -e
 
-./configure \
-    --prefix=/usr
+# TODO send patch
+sed "s/'\(true\|false\)'/\1/" meson_options.txt > _
+mv -f _ meson_options.txt
 
-make
-make DESTDIR="$1" install
+muon setup \
+    -Dprefix=/usr \
+    -Dtests=disabled \
+    -Ddocumentation=disabled \
+    output
+
+ninja -C output
+muon  -C output install
